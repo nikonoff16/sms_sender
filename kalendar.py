@@ -1,10 +1,10 @@
 #! python3
 # -*- coding: utf-8 -*-
 
-kalendar = {'Date': ('preacher1', 'preacher2')}
+events_list = {(2018, 6, 17): ('Victor Osipov', 'Katya Osipova')}
 
-preachers_list = {'preacher1':('89997776655', '88884443322'),
-                  'preacher2': ('80001112233')}
+preachers_list = {'Victor Osipov':(''),
+                  'Katya Osipova': ('')}
 
-
-# You shall not see this
+text = "Try to send text in Russian"
+# You shall not see this'
