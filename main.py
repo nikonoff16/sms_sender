@@ -50,7 +50,7 @@ import sys
 #             }
 #         ]}
 #     encoded = gammu.EncodeSMS(smsinfo)
-# 
+#
 #     for message in encoded:
 #         message['SMSC'] = {'Location': 1}
 #         message['Number'] = phone_number

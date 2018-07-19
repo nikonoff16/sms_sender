@@ -9,9 +9,9 @@ response = requests.get(auth + '/auth')
 todos = response.json()
 
 params = {
-    'number': '79965574689',
+    'number': '',
     'sign': ['SMS aero'],
-    'text': 'It works',
+    'text': 'Это Осипов))',
     'channel': 'INFO'
 }
 
