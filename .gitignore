@@ -4,3 +4,4 @@
 *.txt
 /kalendar*
 kalendar.py
+*.json
