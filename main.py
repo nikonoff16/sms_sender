@@ -2,15 +2,17 @@
 # -*- coding: utf-8 -*-
 
 '''
-        Ура, программа работает!
-            - В базовом режиме, конечно, не прикручен еще механизм автоматизации - нужно запускать скрипт в ручную,
-            - Но при ручном запуске прога без ошибок отрабатывает логику программы:
+        Реализованные возможности:
+            - Все созданные функции при их вызове корректно работают.
+            - Краткое перечисление совершаемой работы:
                 - Проверяет день на соответствие
                 - Определяет тип события, изменяет текст в соотсветствии с событием
                 - Находит в базе номера проповедников и производит на них рассылку.
-                - Логгирует успешные отправки сообщений (хоть и очень кратко)
+                - Логгирует успешные отправки сообщений
         Дальнейшее развитие:
-            - Настроить нормальное логгирование отправки сообщений, собирать информацию о доставке сообщений.
+            - Создание цикла жизни приложения
+            - Создание проверок, не допускающих избыточную отправку сообщений.
+            - Cобирать информацию о доставке сообщений.
             - Посылать отчеты администратору и пастору о проповедниках на воскресенье и прочие дни.
             - Обрабатывать типичные ошибки отправки и сообщать о них администратору.
             - Интерфейс редактирования базы данных приложения.
@@ -25,7 +27,7 @@ import datetime
 import time
 import json
 
-with open("preachers_base.json", "r") as read_file:
+with open("test_base.json", "r") as read_file: # ВНИМАНИЕ! ОТКЛЮЧИ ТЕСТОВЫЙ РЕЖИМ ПЕРЕД СТАРТОМ ПРИЛОЖЕНИЯ!
     preachers_list = json.load(read_file)
 
 with open("events_base.json", "r") as read_file:
@@ -54,16 +56,20 @@ def check_kalendar(events_list):
 
         delta = then - now
 
-        if delta.days == 6 or delta.days == 2:
-            this_day = ','.join([str(foo) for foo in church_event])  # Представление даты в формате словаря events_base
+        if delta.days == 4 or delta.days == 2:
+            row_day = [str(foo) for foo in church_event]
+            this_day = ','.join(row_day)  # Представление даты в формате словаря events_base
+            row_day.reverse()
+            correct_day = '.'.join(row_day)  # Представление даты для текста сообщения и поиска в сообщениях по логам.
+
             if events_base[this_day]['type'] == 'Preaching':
-                print("Someones must prepare for preaching in", this_day)
-                text = "Напоминаю, что " + this_day + " Вы читаете проповедь в церкви 'Слово Жизни'"
+                print("Someones must prepare for preaching in", correct_day)
+                text = correct_day + " Вы читаете проповедь"
                 send_sms(phones(this_day, preachers_list, events_base), text)
 
             if events_base[this_day]['type'] == 'Bible Teaching':
-                print("Someones must prepare for Bible Teaching in", this_day)
-                text = "Напоминаю, что " + this_day + " Вы ведете разбор Библии в церкви 'Слово Жизни'"
+                print("Someones must prepare for Bible Teaching in", correct_day)
+                text = correct_day + " Вы ведете разбор Библии"
                 send_sms(phones(this_day, preachers_list, events_base), text)
         # else:
         #     print('No events today')

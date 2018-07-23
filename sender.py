@@ -18,16 +18,23 @@ def send_sms(numbers, text):
         # Собираем переменную с параметрами
         params = {
         'number': number,
-        'sign': 'SLOVO',
+        'sign': ['SLOVO'],
         'text': text,
         'channel': 'INFO'
     }
         # Отправляем сообщения
         send = requests.get(auth + '/sms/send', params=params)
         track = send.json()
+        di = track['data']['id']
+        message = track['data']['text']
+        phone = track['data']['number']
+        cost = track['data']['cost']
+        log_string = '  id: ' + str(di) + ', text: "' + message + '", number: ' + phone + '", cost: ' + str(cost) + '\n'
         if track['success']:
             with open("success_log.txt", "a") as log:
                 log.write(time.ctime(time.time()))
-                log.write('  Its sent\n')
-
-
+                log.write(log_string)
+        else:
+            with open("success_log.txt", "a") as log:
+                log.write(time.ctime(time.time()))
+                log.write(' Sending failed\n')
