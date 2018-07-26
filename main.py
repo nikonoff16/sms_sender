@@ -90,6 +90,7 @@ while True:
                     send_sms(phones(this_day, preachers_list, events_base), text)
 
                 events_base[this_day]['sended'] = True  # Перезапись таблицы после отправки (не факт что успешной)
+                # Надо еще докрутить, чтобы после всего json перезаписывался. 
 
 
         time.sleep(86400) # Эта задержка в сутки.
