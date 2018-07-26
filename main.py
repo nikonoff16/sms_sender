@@ -33,6 +33,21 @@ with open("test_base.json", "r") as read_file: # ВНИМАНИЕ! ОТКЛЮЧ�
 with open("events_base.json", "r") as read_file:
     events_base = json.load(read_file)
 
+def delta_days(event, first, second):
+    now = datetime.datetime.now()
+    year, month, day = (foo for foo in event)  # этот костыль здесь потому, что ключом в
+    # словаре является кортеж с целыми числами.
+    # другой формат хранения данных может мне помочь от него
+    # избавиться.
+    then = datetime.datetime(year, month, day)
+    delta = then - now
+    if delta == first or delta == second:
+        return True
+    else:
+        return False
+
+
+
 def phones(day, preachers, events):
     miniters = events[day]['ministers']
     numbers = []
@@ -42,38 +57,42 @@ def phones(day, preachers, events):
             numbers.append(foo)
     return numbers
 
-def check_kalendar(events_list):
+while True:
     # Проверяем ключи словаря events_list и высчитываем разницу между ними.
 
     for church_event in events_list:
+        #
+        # now = datetime.datetime.now()
+        # year, month, day = (foo for foo in church_event) # этот костыль здесь потому, что ключом в
+        #                                                  # словаре является кортеж с целыми числами.
+        #                                                  # другой формат хранения данных может мне помочь от него
+        #                                                  # избавиться.
+        # then = datetime.datetime(year, month, day)
+        #
+        # delta = then - now
 
-        now = datetime.datetime.now()
-        year, month, day = (foo for foo in church_event) # этот костыль здесь потому, что ключом в
-                                                         # словаре является кортеж с целыми числами.
-                                                         # другой формат хранения данных может мне помочь от него
-                                                         # избавиться.
-        then = datetime.datetime(year, month, day)
-
-        delta = then - now
-
-        if delta.days == 4 or delta.days == 2:
+        # if delta.days == 4 or delta.days == 2:
+        if delta_days(church_event, 2, 5):
             row_day = [str(foo) for foo in church_event]
             this_day = ','.join(row_day)  # Представление даты в формате словаря events_base
             row_day.reverse()
             correct_day = '.'.join(row_day)  # Представление даты для текста сообщения и поиска в сообщениях по логам.
+            if not events_base[this_day]['sended']: # Проверка предыдущей отправки смс.
 
-            if events_base[this_day]['type'] == 'Preaching':
-                print("Someones must prepare for preaching in", correct_day)
-                text = correct_day + " Вы читаете проповедь"
-                send_sms(phones(this_day, preachers_list, events_base), text)
+                if events_base[this_day]['type'] == 'Preaching':
+                    print("Someones must prepare for preaching in", correct_day)
+                    text = correct_day + " Вы читаете проповедь"
+                    send_sms(phones(this_day, preachers_list, events_base), text)
 
-            if events_base[this_day]['type'] == 'Bible Teaching':
-                print("Someones must prepare for Bible Teaching in", correct_day)
-                text = correct_day + " Вы ведете разбор Библии"
-                send_sms(phones(this_day, preachers_list, events_base), text)
-        # else:
-        #     print('No events today')
+                if events_base[this_day]['type'] == 'Bible Teaching':
+                    print("Someones must prepare for Bible Teaching in", correct_day)
+                    text = correct_day + " Вы ведете разбор Библии"
+                    send_sms(phones(this_day, preachers_list, events_base), text)
 
-        # time.sleep(86400) # Эта задержка в сутки.
+                events_base[this_day]['sended'] = True  # Перезапись таблицы после отправки (не факт что успешной)
 
-check_kalendar(events_list)
+
+        time.sleep(86400) # Эта задержка в сутки.
+
+# check_kalendar(events_list, events_base)
+
