@@ -1,5 +1,7 @@
 
 /venv/
 /.idea/
-
+*.txt
 /kalendar*
+kalendar.py
+*.json
