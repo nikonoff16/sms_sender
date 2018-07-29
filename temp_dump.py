@@ -16,77 +16,137 @@ import json
 events_list = {
     '2018,7,21': {
                     'day': 'saturday',
-                    'ministers': ['Osipov Viktor'],
+                    'ministers': ['Осипов Виктор'],
                     'type': 'Bible Teaching',
-                    'theme': '2 Коринфянам 12'
+                    'theme': '2 Коринфянам 12',
+                    'sended': False
     },
     '2018,7,22': {
                     'day': 'sunday',
-                    'ministers': ["Gorbal Vasiliy", "Krygin Yuriy"],
+                    'ministers': ["Горбаль Василий", "Крыгин Юрий"],
                     'type': 'Preaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,7,28': {
                     'day': 'saturday',
-                    'ministers': ["Novikov Nikolay"],
+                    'ministers': ["Николай Новиков"],
                     'type': 'Bible Teaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,7,29': {
                     'day': 'sunday',
-                    'ministers': ["Lobanov Alexey", "Yurovskich Andrey"],
+                    'ministers': ["Лобанов Алексей", "Юровских Андрей"],
                     'type': 'Preaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,8,4': {
                     'day': 'saturday',
-                    'ministers': ["Agafonov Boris"],
+                    'ministers': ["Агафонов Борис"],
                     'type': 'Preaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,8,5': {
                     'day': 'sunday',
-                    'ministers': ["Gorlov Andrey", "Krygin Yuriy"],
+                    'ministers': ["Горлов Андрей", "Крыгин Юрий"],
                     'type': 'Preaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,8,11': {
                     'day': 'saturday',
-                    'ministers': ["Novikov Nikolay"],
+                    'ministers': ["Новиков Николай"],
                     'type': 'Bible Teaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,8,12': {
                     'day': 'sunday',
-                    'ministers': ["Lobanov Alexey", "Novikov Pavel"],
+                    'ministers': ["Лобанов Алексей", "Новиков Павел"],
                     'type': 'Preaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,8,18': {
                     'day': 'saturday',
-                    'ministers': ["Novikov Nikolay"],
+                    'ministers': ["Новиков Николай"],
                     'type': 'Bible Teaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,8,19': {
                     'day': 'sunday',
-                    'ministers': ["Novikov Edward", "Yurovskich Andrey"],
+                    'ministers': ["Новиков Эдуард", "Юровских Андрей"],
                     'type': 'Preaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     '2018,8,25': {
                     'day': 'saturday',
-                    'ministers': ["Novikov Nikolay"],
+                    'ministers': ["Новиков Николай"],
                     'type': 'Bible Teaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     },
     "2018,8,26": {
                     'day': 'sunday',
-                    'ministers': ["Osipov Viktor", "Solovev Viktor"],
+                    'ministers': ["Осипов Виктор", "Соболев Виктор"],
                     'type': 'Preaching',
-                    'theme': ''
+                    'theme': '',
+                    'sended': False
     }
 }
 
 with open('events_base.json', 'w') as write_file:
     json.dump(events_list, write_file)
+
+preachers_base = {
+  "Агафонов Борис": [""],
+  "Горбаль Василий": ["79058505447"],
+  "Горлов Андрей": ["79058517750"],
+  "Гуляк Виктор": ["79828043024"],
+  "Крыгин Юрий": ["79125232003"],
+  "Лобанов Алексей": ["79068838045"],
+  "Мельников Олег": ["79025910204"],
+  "Новиков Николай": ["79128326978"],
+  "Новиков Павел": ["79125744404"],
+  "Новиков Эдуард": ["79128374707"],
+  "Осипов Виктор": ["79129760922", "79965574689"],
+  "Соловьев Виктор": ["79634381021"],
+  "Тропин Владимир": ["79088329661", "79292292612"],
+  "Юровских Андрей": ["79630101443"]
+}
+test_base = {
+  "Агафонов Борис": ["79195628785"],
+  "Горбаль Василий": ["79195628785"],
+  "Горлов Андрей": ["79195628785"],
+  "Гуляк Виктор": ["79195628785"],
+  "Крыгин Юрий": ["79195628785"],
+  "Лобанов Алексей": ["79195628785"],
+  "Мельников Олег": ["79195628785"],
+  "Новиков Николай": ["79195628785"],
+  "Новиков Павел": ["79195628785"],
+  "Новиков Эдуард": ["79195628785"],
+  "Осипов Виктор": ["79129760922"],
+  "Соловьев Виктор": ["79195628785"],
+  "Тропин Владимир": ["79195628785"],
+  "Юровских Андрей": ["79195628785"]
+}
+#
+# with open('preachers_base.json', 'w') as write_file:
+#     json.dump(preachers_base, write_file)
+#
+# with open('test_base.json', 'w') as write_file:
+#     json.dump(test_base, write_file)
+
+tech_counters = {
+    'cycle_counter': 0,
+    'sms_counter': 0,
+    'total_cost': 0
+}
+#
+# with open('tech_counters.json', 'w') as write_file:
+#     json.dump(tech_counters, write_file)

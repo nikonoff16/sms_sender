@@ -4,9 +4,12 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f266bbf8-a33a-441a-9d23-e781001d315b" name="Default" comment="">
+    <list default="true" id="f266bbf8-a33a-441a-9d23-e781001d315b" name="Default" comment="Теперь delta является функцией и возвращает булевы значения.&#10;А функция check_kalendar стала бесконечным циклом - началом цикла жизни приложения.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README" beforeDir="false" afterPath="$PROJECT_DIR$/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/sender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp_dump.py" beforeDir="false" afterPath="$PROJECT_DIR$/temp_dump.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,46 +21,54 @@
     <session id="1015112570">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.15" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="json" value="40" />
-          <entry key="py" value="349" />
+          <entry key="dummy" value="12" />
+          <entry key="json" value="276" />
+          <entry key="py" value="3961" />
+          <entry key="txt" value="163" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSON" value="40" />
-          <entry key="Python" value="349" />
+          <entry key="JSON" value="276" />
+          <entry key="PLAIN_TEXT" value="175" />
+          <entry key="Python" value="3961" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="json" value="1" />
-          <entry key="py" value="1" />
+          <entry key="README" value="1" />
+          <entry key="json" value="6" />
+          <entry key="py" value="6" />
+          <entry key="txt" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSON" value="1" />
-          <entry key="Python" value="1" />
+          <entry key="JSON" value="6" />
+          <entry key="PLAIN_TEXT" value="5" />
+          <entry key="Python" value="6" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="788">
-              <caret line="74" column="42" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
+            <state relative-caret-position="2329">
+              <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
               <folding>
-                <element signature="e#1155#1192#0" expanded="true" />
-                <marker date="1532583218548" expanded="true" signature="1587:2004" ph="..." />
+                <element signature="e#36#73#0" expanded="true" />
+                <marker date="1532893416718" expanded="true" signature="874:1382" ph="..." />
               </folding>
             </state>
           </provider>
@@ -66,26 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/temp_dump.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="90" selection-start-line="90" selection-end-line="91" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/events_base.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="95" column="19" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="484">
+              <caret line="118" column="52" lean-forward="true" selection-start-line="118" selection-start-column="52" selection-end-line="118" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -93,10 +86,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sender.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+            <state relative-caret-position="357">
+              <caret line="21" column="18" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#33#44#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,10 +98,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kalendar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+            <state relative-caret-position="187">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tech_counters.json">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -123,6 +121,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>text</find>
+      <find>true</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,15 +137,17 @@
       <list>
         <option value="$PROJECT_DIR$/venv/examples" />
         <option value="$PROJECT_DIR$/venv/lib/kalendar.py" />
-        <option value="$PROJECT_DIR$/README" />
-        <option value="$PROJECT_DIR$/preachers_base.json" />
-        <option value="$PROJECT_DIR$/temp_dump.py" />
         <option value="$PROJECT_DIR$/fuck.py" />
         <option value="$PROJECT_DIR$/kalendar.py" />
         <option value="$PROJECT_DIR$/success_log.txt" />
+        <option value="$PROJECT_DIR$/preachers_base.json" />
         <option value="$PROJECT_DIR$/test_base.json" />
-        <option value="$PROJECT_DIR$/sender.py" />
+        <option value="$PROJECT_DIR$/README" />
+        <option value="$PROJECT_DIR$/tech_counters.json" />
         <option value="$PROJECT_DIR$/events_base.json" />
+        <option value="$PROJECT_DIR$/test_res.py" />
+        <option value="$PROJECT_DIR$/temp_dump.py" />
+        <option value="$PROJECT_DIR$/sender.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -162,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -174,12 +174,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -282,26 +283,49 @@
       <option name="project" value="LOCAL" />
       <updated>1532362446068</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Теперь delta является функцией и возвращает булевы значения.&#10;А функция check_kalendar стала бесконечным циклом - началом цикла жизни приложения.">
+      <created>1532583329265</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1532583329265</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Теперь delta является функцией и возвращает булевы значения.&#10;А функция check_kalendar стала бесконечным циклом - началом цикла жизни приложения.">
+      <created>1532583393111</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1532583393111</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20141065" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1598746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" order="0" sideWeight="0.65357965" weight="0.328594" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4996151" weight="0.328594" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4984326" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49961567" weight="0.39968404" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.4984326" weight="0.32952693" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.34642032" side_tool="true" visible="true" weight="0.26264274" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015674" side_tool="true" visible="true" weight="0.0" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -317,7 +341,8 @@
     <MESSAGE value="Разработан базовый механизм отправки смс через API SMSAero, созданы необходимые json-объекты с информацией." />
     <MESSAGE value="Прога работает! СМС отправляются, все функции правильно взаимодействуют." />
     <MESSAGE value="Скорректировал логгирование сообщений и докрутил перевод даты в удобный&#10;для чтения людьми формат." />
-    <option name="LAST_COMMIT_MESSAGE" value="Скорректировал логгирование сообщений и докрутил перевод даты в удобный&#10;для чтения людьми формат." />
+    <MESSAGE value="Теперь delta является функцией и возвращает булевы значения.&#10;А функция check_kalendar стала бесконечным циклом - началом цикла жизни приложения." />
+    <option name="LAST_COMMIT_MESSAGE" value="Теперь delta является функцией и возвращает булевы значения.&#10;А функция check_kalendar стала бесконечным циклом - началом цикла жизни приложения." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -344,69 +369,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_base.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state>
+          <caret column="1388" selection-start-column="1388" selection-end-column="1388" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/success_log.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/preachers_base.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state>
+          <caret column="1407" selection-start-column="1407" selection-end-column="1407" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_res.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sender.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="340">
+          <caret line="20" column="112" selection-start-line="20" selection-start-column="112" selection-end-line="20" selection-end-column="112" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kalendar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/success_log.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1077" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/events_base.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="95" column="19" selection-start-line="95" selection-start-column="19" selection-end-line="95" selection-end-column="19" />
+        <state>
+          <caret column="1257" selection-start-column="1257" selection-end-column="1257" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sender.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="18" lean-forward="true" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding>
+            <element signature="e#33#44#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/temp_dump.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="90" selection-start-line="90" selection-end-line="91" selection-end-column="38" />
+        <state relative-caret-position="484">
+          <caret line="118" column="52" lean-forward="true" selection-start-line="118" selection-start-column="52" selection-end-line="118" selection-end-column="52" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="788">
-          <caret line="74" column="42" selection-start-line="74" selection-start-column="42" selection-end-line="74" selection-end-column="42" />
+        <state relative-caret-position="2329">
+          <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
           <folding>
-            <element signature="e#1155#1192#0" expanded="true" />
-            <marker date="1532583218548" expanded="true" signature="1587:2004" ph="..." />
+            <element signature="e#36#73#0" expanded="true" />
+            <marker date="1532893416718" expanded="true" signature="874:1382" ph="..." />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tech_counters.json">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
