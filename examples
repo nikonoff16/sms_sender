@@ -1,3 +1,0 @@
- 574  gammu sendsms TEXT '+79129760922' -unicode -report -text 'Тест, с**а'
-  575  sudo gammu sendsms TEXT '+79129760922' -unicode -report -text 'Тест, с**а'
-  576  sudo gammu sendsms TEXT '+79125232003' -unicode -report -text 'Это Витя О. Заставил работать одну прогу, что смс через модем отправляет. Ее можно в скриптах использовать. Уже лечу на Детский Мир!'

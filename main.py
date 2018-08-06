@@ -1,14 +1,20 @@
-#! python3
+#! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function
-from kalendar import events_2018_summer as events_list
+from kalendar import *
 from sender import send_sms
 import datetime
 import time
 import json
 
-with open("preachers_base.json", "r") as read_file: # ВНИМАНИЕ! ПЕРЕКЛЮЧИ В ТЕСТОВЫЙ РЕЖИМ ПЕРЕД ТЕСТИРОВАНИЕМ ПРИЛОЖЕНИЯ!
+'''
+Здесь будет модуль по переключению сезонов и настройке списков
+'''
+events_list = summer
+
+
+with open("preachers_base.json", "r") as read_file:  # ВНИМАНИЕ! ПЕРЕКЛЮЧИ В ТЕСТОВЫЙ РЕЖИМ ПЕРЕД ТЕСТИРОВАНИЕМ ПРИЛОЖЕНИЯ!
     preachers_list = json.load(read_file)
 
 
@@ -58,6 +64,7 @@ def phones(day, preachers, events):
             numbers.append(foo)
     return numbers
 
+
 ''' 
 *******************************************************************************************************
 **************************************** ЦИКЛ ЖИЗНИ ПРИЛОЖЕНИЯ ****************************************
@@ -71,12 +78,16 @@ while True:
     cost = 0
     count = 0
 
+    # Подгружаем базу отработаных дней
+    with open('days_script_was_working.json', "r") as days_checked:
+        checked_days = json.load(days_checked)
+        check_day = datetime.date.__str__(datetime.date.today())
+
     # Логгируем начало цикла
     with open("success_log.txt", "a") as log:
         log.write(time.ctime(time.time()))
         cycle_number = tech_counters['cycle_counter']
         log.write(' Cycle #' + str(cycle_number) + ' started\n')
-
 
     # Создаем в памяти объект базы событий из json-объекта
     with open("events_base.json", "r") as read_file:
@@ -85,7 +96,7 @@ while True:
     # Проверяем ключи словаря events_list и высчитываем разницу между ними.
     for church_event in events_list:
 
-        if delta_days(church_event, 2, 6) and (9 <= int(time.strftime('%H', time.localtime())) < 22):
+        if delta_days(church_event, 2, 5) and (9 <= int(time.strftime('%H', time.localtime())) < 22):
             ''' 
             Эта проверка корректной даты и времени отправки. Во втором условии проверяется час отправки,
             чтобы не нарушать условия соглашения с смс-шлюзом
@@ -95,29 +106,40 @@ while True:
             row_day.reverse()
             correct_day = '.'.join(row_day)  # Представление даты для текста сообщения и поиска в сообщениях по логам.
 
-            if not events_base[this_day]['sended']: # Проверка предыдущей отправки смс.
+            if events_base[this_day]['sended'] < 2 and not checked_days.get(
+                    check_day):  # Проверка предыдущей отправки смс.
 
                 if events_base[this_day]['type'] == 'Preaching':
                     print("Someones must prepare for preaching in", correct_day)
-                    text = correct_day + " Вы читаете проповедь"
+                    text = correct_day + " Вы проповедуете в церкви Слово Жизни"
                     admin_text = ', '.join(events_base[this_day]['ministers']) + ' проповедуют ' + correct_day
                     count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
-                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']], admin_text)
+                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
+                                           admin_text)
 
                 if events_base[this_day]['type'] == 'Bible Teaching':
                     print("Someones must prepare for Bible Teaching in", correct_day)
                     text = correct_day + " Вы ведете разбор Библии"
-                    admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет служение ' + correct_day
+                    admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет разбор ' + correct_day
                     count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
-                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']], admin_text)
+                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
+                                           admin_text)
 
-                events_base[this_day]['sended'] = True  # Перезапись таблицы после отправки (не факт что успешной)
+                events_base[this_day]['sended'] += 1  # Перезапись таблицы после отправки (не факт что успешной)
+                checked_days[check_day] = True  # Отметка об отправке в этот день
+
+                with open('days_script_was_working.json', "w") as days_checked:
+                    checked_days = json.dump(checked_days, days_checked)
+
+
+    # Напоминание о необходимости создавать новый список
+    # TODO: создать проверку наличия списка на следущий сезон.
 
     # Перезаписываем файл базы событий
     with open("events_base.json", "w") as write_file:
         events_base = json.dump(events_base, write_file)
 
-
+    # Логгируем завершение цикла
     with open("success_log.txt", "a") as log:
         log.write(time.ctime(time.time()))
         log.write(' Cycle #' + str(cycle_number) + ' finised\n')
@@ -131,7 +153,4 @@ while True:
         tech_counters = json.dump(tech_counters, write_file)
 
     print("Sleeping for 3 hours")
-    time.sleep(10800) # Эта задержка на 3 часа.
-
-# check_kalendar(events_list, events_base)
-
+    time.sleep(10800)  # Это задержка на 3 часа.
