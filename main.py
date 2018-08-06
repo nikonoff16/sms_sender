@@ -11,6 +11,7 @@ import json
 '''
 Здесь будет модуль по переключению сезонов и настройке списков
 '''
+# TODO: (1) написать модуль настройки программы. В нем будут корректироваться: -kalendar.py -events_base.json -preachers_base.json
 events_list = summer
 
 
@@ -120,6 +121,7 @@ while True:
                 if events_base[this_day]['type'] == 'Bible Teaching':
                     print("Someones must prepare for Bible Teaching in", correct_day)
                     text = correct_day + " Вы ведете разбор Библии"
+                    # TODO: (3) прикрутить функцию send_email для отправки сообщений по почте (ее можно вызывать и в send_sms)
                     admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет разбор ' + correct_day
                     count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
                     count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
@@ -130,10 +132,12 @@ while True:
 
                 with open('days_script_was_working.json', "w") as days_checked:
                     checked_days = json.dump(checked_days, days_checked)
-
+    # Контроль работы программы (отправка сообщения админу о работе)
+    # TODO: (4) написать код, отправляющий на емайл админу оповещение о работе с отчетом из логов.
+    # https://habr.com/company/pechkin/blog/281915/
 
     # Напоминание о необходимости создавать новый список
-    # TODO: создать проверку наличия списка на следущий сезон.
+    # TODO: (2) создать проверку наличия списка на следущий сезон.
 
     # Перезаписываем файл базы событий
     with open("events_base.json", "w") as write_file:
