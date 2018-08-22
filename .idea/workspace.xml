@@ -4,7 +4,8 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f266bbf8-a33a-441a-9d23-e781001d315b" name="Default" comment="Первый в мастере">
+    <list default="true" id="f266bbf8-a33a-441a-9d23-e781001d315b" name="Default" comment="Забыл кое-что))">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,15 +18,15 @@
     <session id="1015112570">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
-          <entry key="project.open.time.15" value="2" />
+          <entry key="project.closed" value="11" />
+          <entry key="project.open.time.15" value="3" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="2" />
-          <entry key="project.open.time.18" value="2" />
+          <entry key="project.open.time.18" value="3" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.63" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -34,13 +35,13 @@
           <entry key="examples" value="1" />
           <entry key="json" value="277" />
           <entry key="py" value="5721" />
-          <entry key="txt" value="181" />
+          <entry key="txt" value="213" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="277" />
-          <entry key="PLAIN_TEXT" value="194" />
+          <entry key="PLAIN_TEXT" value="226" />
           <entry key="Python" value="5721" />
         </counts>
       </usages-collector>
@@ -67,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2006">
-              <caret line="123" column="22" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+            <state relative-caret-position="2176">
+              <caret line="133" column="102" selection-start-line="133" selection-start-column="102" selection-end-line="133" selection-end-column="102" />
             </state>
           </provider>
         </entry>
@@ -282,10 +283,24 @@
       <option name="project" value="LOCAL" />
       <updated>1532894550021</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Дописал TODO">
+      <created>1533536537843</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1533536537843</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Забыл кое-что))">
+      <created>1533536706105</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1533536706105</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
-  <component name="TodoView" selected-index="2">
+  <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -296,6 +311,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1598746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -307,10 +323,10 @@
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49961567" weight="0.39968404" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="TODO" order="7" sideWeight="0.4968652" visible="true" weight="0.32952693" />
+      <window_info active="true" anchor="bottom" id="TODO" order="7" sideWeight="0.4968652" visible="true" weight="0.3034258" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4984326" weight="0.32952693" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5031348" side_tool="true" weight="0.22838499" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32952693" />
       <window_info anchor="bottom" id="Python Console" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -327,7 +343,9 @@
     <MESSAGE value="Скорректировал логгирование сообщений и докрутил перевод даты в удобный&#10;для чтения людьми формат." />
     <MESSAGE value="Теперь delta является функцией и возвращает булевы значения.&#10;А функция check_kalendar стала бесконечным циклом - началом цикла жизни приложения." />
     <MESSAGE value="Первый в мастере" />
-    <option name="LAST_COMMIT_MESSAGE" value="Первый в мастере" />
+    <MESSAGE value="Дописал TODO" />
+    <MESSAGE value="Забыл кое-что))" />
+    <option name="LAST_COMMIT_MESSAGE" value="Забыл кое-что))" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -361,13 +379,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temp_dump.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="146" column="1" lean-forward="true" selection-start-line="146" selection-start-column="1" selection-end-line="146" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/temp_dump.py" />
     <entry file="file://$PROJECT_DIR$/success_log.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -409,8 +421,8 @@
     <entry file="file://$PROJECT_DIR$/examples" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="123" column="22" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+        <state relative-caret-position="2176">
+          <caret line="133" column="102" selection-start-line="133" selection-start-column="102" selection-end-line="133" selection-end-column="102" />
         </state>
       </provider>
     </entry>

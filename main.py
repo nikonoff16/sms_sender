@@ -131,7 +131,7 @@ while True:
                 checked_days[check_day] = True  # Отметка об отправке в этот день
 
                 with open('days_script_was_working.json', "w") as days_checked:
-                    checked_days = json.dump(checked_days, days_checked)
+                    checked_days = json.dump(checked_days, days_checked, indent=4, ensure_ascii=False,)
     # Контроль работы программы (отправка сообщения админу о работе)
     # TODO: (4) написать код, отправляющий на емайл админу оповещение о работе с отчетом из логов.
     # https://habr.com/company/pechkin/blog/281915/
@@ -141,7 +141,7 @@ while True:
 
     # Перезаписываем файл базы событий
     with open("events_base.json", "w") as write_file:
-        events_base = json.dump(events_base, write_file)
+        events_base = json.dump(events_base, write_file, indent=4, ensure_ascii=False,)
 
     # Логгируем завершение цикла
     with open("success_log.txt", "a") as log:
@@ -154,7 +154,7 @@ while True:
     tech_counters['total_cost'] += cost
     # Итерируем счетчик циклов
     with open("tech_counters.json", "w") as write_file:
-        tech_counters = json.dump(tech_counters, write_file)
+        tech_counters = json.dump(tech_counters, write_file, indent=4, ensure_ascii=False,)
 
     print("Sleeping for 3 hours")
     time.sleep(10800)  # Это задержка на 3 часа.
