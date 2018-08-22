@@ -4,9 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f266bbf8-a33a-441a-9d23-e781001d315b" name="Default" comment="Забыл кое-что))">
+    <list default="true" id="f266bbf8-a33a-441a-9d23-e781001d315b" name="Default" comment="Стабильная версия с минорными изменениями: Все файлы json теперь записываются в читаемом виде (исправлена работа с кодировками и представлением файла в редакторе).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +18,8 @@
     <session id="1015112570">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.15" value="3" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="2" />
@@ -26,7 +27,7 @@
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.63" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -35,13 +36,13 @@
           <entry key="examples" value="1" />
           <entry key="json" value="277" />
           <entry key="py" value="5721" />
-          <entry key="txt" value="213" />
+          <entry key="txt" value="426" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="277" />
-          <entry key="PLAIN_TEXT" value="226" />
+          <entry key="PLAIN_TEXT" value="439" />
           <entry key="Python" value="5721" />
         </counts>
       </usages-collector>
@@ -61,23 +62,19 @@
           <entry key="Python" value="14" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2176">
-              <caret line="133" column="102" selection-start-line="133" selection-start-column="102" selection-end-line="133" selection-end-column="102" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sender.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="153">
               <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
               <folding>
                 <element signature="e#33#44#0" expanded="true" />
@@ -142,7 +139,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,6 +150,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -297,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1533536706105</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Стабильная версия с минорными изменениями: Все файлы json теперь записываются в читаемом виде (исправлена работа с кодировками и представлением файла в редакторе).">
+      <created>1534920120844</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1534920120844</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -345,7 +349,8 @@
     <MESSAGE value="Первый в мастере" />
     <MESSAGE value="Дописал TODO" />
     <MESSAGE value="Забыл кое-что))" />
-    <option name="LAST_COMMIT_MESSAGE" value="Забыл кое-что))" />
+    <MESSAGE value="Стабильная версия с минорными изменениями: Все файлы json теперь записываются в читаемом виде (исправлена работа с кодировками и представлением файла в редакторе)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Стабильная версия с минорными изменениями: Все файлы json теперь записываются в читаемом виде (исправлена работа с кодировками и представлением файла в редакторе)." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -365,24 +370,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/preachers_base.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_base.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/preachers_base.json" />
+    <entry file="file://$PROJECT_DIR$/test_base.json" />
     <entry file="file://$PROJECT_DIR$/temp_dump.py" />
-    <entry file="file://$PROJECT_DIR$/success_log.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/success_log.txt" />
     <entry file="file://$PROJECT_DIR$/kalendar.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -390,27 +381,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/events_base.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="982">
-          <caret line="126" column="82" selection-start-line="126" selection-start-column="82" selection-end-line="126" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tech_counters.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="59" lean-forward="true" selection-start-column="59" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/days_script_was_working.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" lean-forward="true" selection-start-column="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/events_base.json" />
+    <entry file="file://$PROJECT_DIR$/tech_counters.json" />
+    <entry file="file://$PROJECT_DIR$/days_script_was_working.json" />
     <entry file="file://$PROJECT_DIR$/presentation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
@@ -419,16 +392,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/examples" />
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2176">
-          <caret line="133" column="102" selection-start-line="133" selection-start-column="102" selection-end-line="133" selection-end-column="102" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py" />
     <entry file="file://$PROJECT_DIR$/sender.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
+        <state relative-caret-position="153">
           <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
           <folding>
             <element signature="e#33#44#0" expanded="true" />
