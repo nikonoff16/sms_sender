@@ -48,21 +48,28 @@ def delta_days(event, first, second):
         return False
 
 
-def phones(day, preachers, events):
+def phones(day, preachers, events, all=False):
     '''
     Эта функция берет из базы событий events_base имена проповедников и забирает из preachers_base
     номера этих проповедников и помещает их в список.
     :param day: ключ в словаре events, по которому осуществляется поиск
     :param preachers: словарь с телефонами проповедников
     :param events: словарь с информацией о событиях
+    :param all: при намеренном включении инициируется альтернативный сценарий 
+                работы функции - сбор всех нормеров из базы
     :return: список телефонов в строковом представлении.
     '''
-    miniters = events[day]['ministers']
-    numbers = []
-    for minister in miniters:
-        phone = preachers[minister]
-        for foo in phone:
-            numbers.append(foo)
+    if all:
+        numbers = []
+        for preacher in preachers_list.keys():
+            numbers.append(preachers_list[preacher][0])
+    if not all:
+        miniters = events[day]['ministers']
+        numbers = []
+        for minister in miniters:
+            phone = preachers[minister]
+            for foo in phone:
+                numbers.append(foo)
     return numbers
 
 
