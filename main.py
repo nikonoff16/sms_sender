@@ -17,7 +17,7 @@ with open("preachers_base.json", "r") as read_file:  # ВНИМАНИЕ! ПЕР�
     preachers_list = json.load(read_file)
 
 
-def delta_days(event, first, second):
+def delta_days(event, first, second, FromTo=False):
     '''
     Функция принимает дату в формате (ГГГГ,ММ,ДД) и два цельночисленных значения,
     которые являются показателями разницы, необходимыми пользователю. В случае
@@ -27,6 +27,7 @@ def delta_days(event, first, second):
     :param event: дата вида (ГГГГ,ММ,ДД)
     :param first: цельночисленный произвольный аргумент
     :param second: цельночисленный произвольный аргумент
+    :param FromTo: переключение между точечным и интервальным режимом работы
     :return: булева величина
     '''
     now = datetime.datetime.now()
@@ -38,12 +39,20 @@ def delta_days(event, first, second):
     then = datetime.datetime(year, month, day)
     delta = then - now
     # print(delta, now, then)
-    if delta.days == second or delta.days == first:
-        # print('True')
-        return True
-    else:
-        # print('False')
-        return False
+    if FromTo:
+        if delta.days > first and delta.days < second:
+            # print('True')
+            return True
+        else:
+            # print('False')
+            return False
+    else:    
+        if delta.days == second or delta.days == first:
+            # print('True')
+            return True
+        else:
+            # print('False')
+            return False
 
 
 def phones(day, preachers, events, all=False):
@@ -69,6 +78,24 @@ def phones(day, preachers, events, all=False):
             for foo in phone:
                 numbers.append(foo)
     return numbers
+
+def dates(church_event, for_script=False, for_message=False):
+    ''' 
+    Эта проверка корректной даты и времени отправки. Во втором условии проверяется час отправки,
+    чтобы не нарушать условия соглашения с смс-шлюзом
+    '''
+    row_day = [str(foo) for foo in church_event]
+    this_day = ','.join(row_day)  # Представление даты в формате словаря events_base
+    row_day.reverse()
+    correct_day = '.'.join(row_day)  # Представление даты для текста сообщения и поиска в сообщениях по логам.
+    if not for_script and not for_message:
+        return this_day, correct_day
+    if for_script and not for_message:
+        return this_day
+    if for_message and not for_script:
+        return correct_day
+    if for_message and for_script:  # На дурака
+        return this_day, correct_day
 
 
 ''' 
@@ -98,10 +125,11 @@ while True:
     # Создаем в памяти объект базы событий из json-объекта
     with open("events_base.json", "r") as read_file:
         events_base = json.load(read_file)
-    events_row = [(foo.split(',')) for foo in events_base.keys()]
-    events_list = []
+    
 
     # Замена старого kalendar.py (Одна ошибка с этим файлом помешала мне запустить скрипт вовремя.)
+    events_row = [(foo.split(',')) for foo in events_base.keys()]
+    events_list = []
     for ev in events_row:
         fuck = []
         for string in ev:
@@ -109,41 +137,61 @@ while True:
         fuck = tuple(fuck)
         events_list.append(fuck)
 
+    # Функция Дайджест проповедника 
+    if (time.strftime("%a") == "Sun") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
+        weekly_events = []
+        messages = ["Новости служения"]
+        for church_event in events_list:
+            if delta_days(church_event, 1, 7, FromTo=True):
+                weekly_events.append(church_event)
+        for ev in weekly_events:
+            text = dates(ev, for_message=True)
+            den = dates(ev, for_script=True)
+            if events_base[den]["type"] == "Bible Teaching":
+                text += " Разбор"
+            if events_base[den]["type"] == "Preaching":
+                text += " Служение"
+            text += " ведут "
+            text += ', '.join(events_base[den]['ministers'])
+            if events_base[den]['theme']:
+                text += '. Тема: ' + events_base[den]['theme']
+            # print(text, len(text))
+            messages.append(text)
+        messages = ' '.join(messages)
+        print(messages)
+        # count, cost = send_sms(phones("This dosen't matter", preachers_list, events_base, all=True), messages)
+
+
+        
+
+
     # Проверяем ключи словаря events_list и высчитываем разницу между ними.
     for church_event in events_list:
-        # Функция Дайджест проповедника 
-        if (time.strftime("%a") == "Mon") and (9 <= int(time.strftime('%H', time.localtime())) < 12):
-            digest_text = "Привет, "
+        
         # Отправка сообщений непосредственным участникам служений
-        if delta_days(church_event, 2, 5) and (9 <= int(time.strftime('%H', time.localtime())) < 22):
-            ''' 
-            Эта проверка корректной даты и времени отправки. Во втором условии проверяется час отправки,
-            чтобы не нарушать условия соглашения с смс-шлюзом
-            '''
-            row_day = [str(foo) for foo in church_event]
-            this_day = ','.join(row_day)  # Представление даты в формате словаря events_base
-            row_day.reverse()
-            correct_day = '.'.join(row_day)  # Представление даты для текста сообщения и поиска в сообщениях по логам.
+        if delta_days(church_event, 2, 5) and (9 <= int(time.strftime('%H', time.localtime())) < 22):       
+
+            this_day, correct_day = dates(church_event)
 
             if events_base[this_day]['sended'] < 2 and not checked_days.get(
                     check_day):  # Проверка предыдущей отправки смс.
 
                 if events_base[this_day]['type'] == 'Preaching':
                     print("Someones must prepare for preaching in", correct_day)
-                    # text = correct_day + " Вы проповедуете в церкви Слово Жизни"
-                    # admin_text = ', '.join(events_base[this_day]['ministers']) + ' проповедуют ' + correct_day
-                    # count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
-                    # count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
-                    #                        admin_text)
+                    text = correct_day + " Вы проповедуете в церкви Слово Жизни"
+                    admin_text = ', '.join(events_base[this_day]['ministers']) + ' проповедуют ' + correct_day
+                    count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
+                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
+                                           admin_text)
 
                 if events_base[this_day]['type'] == 'Bible Teaching':
                     print("Someones must prepare for Bible Teaching in", correct_day)
                     text = correct_day + " Вы ведете разбор Библии"
-                    # # TODO: (3) прикрутить функцию send_email для отправки сообщений по почте (ее можно вызывать и в send_sms)
-                    # admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет разбор ' + correct_day
-                    # count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
-                    # count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
-                    #                        admin_text)
+                    # TODO: (3) прикрутить функцию send_email для отправки сообщений по почте (ее можно вызывать и в send_sms)
+                    admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет разбор ' + correct_day
+                    count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
+                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
+                                           admin_text)
 
                 events_base[this_day]['sended'] += 1  # Перезапись таблицы после отправки (не факт что успешной)
                 checked_days[check_day] = True  # Отметка об отправке в этот день
