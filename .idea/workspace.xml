@@ -4,7 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f266bbf8-a33a-441a-9d23-e781001d315b" name="Default" comment="Стабильная версия с минорными изменениями: Все файлы json теперь записываются в читаемом виде (исправлена работа с кодировками и представлением файла в редакторе)." />
+    <list default="true" id="f266bbf8-a33a-441a-9d23-e781001d315b" name="Default" comment="Сделан слепок рабочей осенней конфигурациии. Никаких изменений нет.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +84,21 @@
           <entry key="Python" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="txt" value="81" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="81" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.merge" value="1" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
@@ -100,7 +117,14 @@
       </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1380">
+              <caret line="92" column="58" lean-forward="true" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
+              <folding>
+                <element signature="e#49#86#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -320,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534920120844</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Сделан слепок рабочей осенней конфигурациии. Никаких изменений нет.">
+      <created>1538009312692</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1538009312692</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TodoView">
@@ -334,8 +365,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="803" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15926708" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15926708" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Inspection Results" order="0" sideWeight="0.65357965" weight="0.328594" />
@@ -345,7 +377,7 @@
       <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49961567" weight="0.39968404" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.4968652" visible="true" weight="0.302391" />
+      <window_info active="true" anchor="bottom" id="TODO" order="7" sideWeight="0.4968652" visible="true" weight="0.302391" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4984326" weight="0.32952693" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5031348" side_tool="true" weight="0.22838499" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32952693" />
@@ -368,7 +400,8 @@
     <MESSAGE value="Дописал TODO" />
     <MESSAGE value="Забыл кое-что))" />
     <MESSAGE value="Стабильная версия с минорными изменениями: Все файлы json теперь записываются в читаемом виде (исправлена работа с кодировками и представлением файла в редакторе)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Стабильная версия с минорными изменениями: Все файлы json теперь записываются в читаемом виде (исправлена работа с кодировками и представлением файла в редакторе)." />
+    <MESSAGE value="Сделан слепок рабочей осенней конфигурациии. Никаких изменений нет." />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделан слепок рабочей осенней конфигурациии. Никаких изменений нет." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -421,7 +454,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="92" column="58" lean-forward="true" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
+          <folding>
+            <element signature="e#49#86#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
