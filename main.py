@@ -137,6 +137,7 @@ while True:
         events_list.append(fuck)
 
     # Функция Дайджест проповедника
+    # if (time.strftime("%a") == "Thu") and (6 <= int(time.strftime('%H', time.localtime())) < 21):
     if (time.strftime("%a") == "Sun") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
         weekly_events = []
         messages = ["Новости служения"]
