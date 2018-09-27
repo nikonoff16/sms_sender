@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from __future__ import print_function
-from kalendar import *
+from kalendar import autumn
 from sender import send_sms
 import datetime
 import time
@@ -12,7 +12,7 @@ import json
 Здесь будет модуль по переключению сезонов и настройке списков
 '''
 # TODO: (1) написать модуль настройки программы. В нем будут корректироваться: -kalendar.py -events_base.json -preachers_base.json
-events_list = summer
+events_list = autumn
 
 
 with open("preachers_base.json", "r") as read_file:  # ВНИМАНИЕ! ПЕРЕКЛЮЧИ В ТЕСТОВЫЙ РЕЖИМ ПЕРЕД ТЕСТИРОВАНИЕМ ПРИЛОЖЕНИЯ!
