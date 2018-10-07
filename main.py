@@ -136,7 +136,7 @@ while True:
         fuck = tuple(fuck)
         events_list.append(fuck)
 
-    # Функция Дайджест проповедника
+    # Функция Дайджест проповедника ОНА НАСТРОЕНА ИСКЛЮЧИТЕЛНО НА РАБОТУ С ТРЕХЧАСОВЫМИ ПЕРИОДАМИ БЕЗДЕЙСТВИЯ!!!
     # if (time.strftime("%a") == "Thu") and (6 <= int(time.strftime('%H', time.localtime())) < 21):
     if (time.strftime("%a") == "Sun") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
         weekly_events = []
@@ -161,6 +161,10 @@ while True:
         print(messages)
         count, cost = send_sms(phones("This dosen't matter", preachers_list, events_base, all=True), messages)
 
+    # Отправка предупреждений о братском молитвенном ОНА НАСТРОЕНА ИСКЛЮЧИТЕЛНО НА РАБОТУ С ТРЕХЧАСОВЫМИ ПЕРИОДАМИ БЕЗДЕЙСТВИЯ!!!
+    if (time.strftime("%a") == "Wed") and (9 <= int(time.strftime('%H', time.localtime())) < 12):
+        msg = 'Сегодня молитва в 20:00 у пастора'
+        count, cost = send_sms(phones("This dosen't matter", preachers_list, events_base, all=True), msg)
 
         
 
