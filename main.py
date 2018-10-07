@@ -98,31 +98,6 @@ def dates(church_event, for_script=False, for_message=False):
         return this_day, correct_day
 
 
-# def mass_sms_send(events, events_base, differences, preachers_list, sender, dates):
-#
-#     if (time.strftime("%a") == "Thu") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
-#         weekly_events = []
-#         messages = ["Новости служения"]
-#         for church_event in events:
-#             if differences(church_event, 1, 7, FromTo=True):
-#                 weekly_events.append(church_event)
-#         for ev in weekly_events:
-#             text = dates(ev, for_message=True)
-#             den = dates(ev, for_script=True)
-#             if events_base[den]["type"] == "Bible Teaching":
-#                 text += " Разбор"
-#             if events_base[den]["type"] == "Preaching":
-#                 text += " Служение"
-#             text += " ведут "
-#             text += ', '.join(events_base[den]['ministers'])
-#             if events_base[den]['theme']:
-#                 text += '. Тема: ' + events_base[den]['theme']
-#             # print(text, len(text))
-#             messages.append(text)
-#         messages = ' '.join(messages)
-#         print(messages)
-#         # trash1, trash2 = sender(phones("This dosen't matter", preachers_list, events_base, all=True), messages)
-
 ''' 
 *******************************************************************************************************
 **************************************** ЦИКЛ ЖИЗНИ ПРИЛОЖЕНИЯ ****************************************
@@ -161,9 +136,9 @@ while True:
         fuck = tuple(fuck)
         events_list.append(fuck)
 
-    # Функция Дайджест проповедника
-    if (time.strftime("%a") == "Thu") and (6 <= int(time.strftime('%H', time.localtime())) < 21):
-    # if (time.strftime("%a") == "Sun") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
+    # Функция Дайджест проповедника ОНА НАСТРОЕНА ИСКЛЮЧИТЕЛНО НА РАБОТУ С ТРЕХЧАСОВЫМИ ПЕРИОДАМИ БЕЗДЕЙСТВИЯ!!!
+    # if (time.strftime("%a") == "Thu") and (6 <= int(time.strftime('%H', time.localtime())) < 21):
+    if (time.strftime("%a") == "Sun") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
         weekly_events = []
         messages = ["Новости служения"]
         for church_event in events_list:
@@ -186,8 +161,10 @@ while True:
         print(messages)
         count, cost = send_sms(phones("This dosen't matter", preachers_list, events_base, all=True), messages)
 
-        # mass_sms_send(events_list, events_base, delta_days, preachers_list, send_sms, dates)
-
+    # Отправка предупреждений о братском молитвенном ОНА НАСТРОЕНА ИСКЛЮЧИТЕЛНО НА РАБОТУ С ТРЕХЧАСОВЫМИ ПЕРИОДАМИ БЕЗДЕЙСТВИЯ!!!
+    if (time.strftime("%a") == "Wed") and (9 <= int(time.strftime('%H', time.localtime())) < 12):
+        msg = 'Сегодня молитва в 20:00 у пастора'
+        count, cost = send_sms(phones("This dosen't matter", preachers_list, events_base, all=True), msg)
 
         
 
