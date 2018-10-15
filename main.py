@@ -138,7 +138,7 @@ while True:
 
     # Функция Дайджест проповедника ОНА НАСТРОЕНА ИСКЛЮЧИТЕЛНО НА РАБОТУ С ТРЕХЧАСОВЫМИ ПЕРИОДАМИ БЕЗДЕЙСТВИЯ!!!
     # if (time.strftime("%a") == "Thu") and (6 <= int(time.strftime('%H', time.localtime())) < 21):
-    if (time.strftime("%a") == "Sun") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
+    if (time.strftime("%a") == "Mon") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
         weekly_events = []
         messages = ["Новости служения"]
         for church_event in events_list:
@@ -173,7 +173,7 @@ while True:
     for church_event in events_list:
         
         # Отправка сообщений непосредственным участникам служений
-        if delta_days(church_event, 2, 5) and (9 <= int(time.strftime('%H', time.localtime())) < 22):       
+        if delta_days(church_event, 2, 5) and (8 <= int(time.strftime('%H', time.localtime())) < 22):       
 
             this_day, correct_day = dates(church_event)
 
@@ -184,18 +184,18 @@ while True:
                     print("Someones must prepare for preaching in", correct_day)
                     text = correct_day + " Вы проповедуете в церкви Слово Жизни"
                     admin_text = ', '.join(events_base[this_day]['ministers']) + ' проповедуют ' + correct_day
-                    # count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
-                    # count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
-                    #                        admin_text)
+                    count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
+                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
+                                           admin_text)
 
                 if events_base[this_day]['type'] == 'Bible Teaching':
                     print("Someones must prepare for Bible Teaching in", correct_day)
                     text = correct_day + " Вы ведете разбор Библии"
                     # TODO: (3) прикрутить функцию send_email для отправки сообщений по почте (ее можно вызывать и в send_sms)
                     admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет разбор ' + correct_day
-                    # count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
-                    # count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
-                    #                        admin_text)
+                    count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
+                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
+                                           admin_text)
 
                 events_base[this_day]['sended'] += 1  # Перезапись таблицы после отправки (не факт что успешной)
                 checked_days[check_day] = True  # Отметка об отправке в этот день
