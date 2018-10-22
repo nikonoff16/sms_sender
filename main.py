@@ -173,7 +173,7 @@ while True:
     for church_event in events_list:
         
         # Отправка сообщений непосредственным участникам служений
-        if delta_days(church_event, 2, 5) and (8 <= int(time.strftime('%H', time.localtime())) < 22):       
+        if delta_days(church_event, 2, 5) and (9 <= int(time.strftime('%H', time.localtime())) < 22):       
 
             this_day, correct_day = dates(church_event)
 
@@ -181,18 +181,18 @@ while True:
                     check_day):  # Проверка предыдущей отправки смс.
 
                 if events_base[this_day]['type'] == 'Preaching':
-                    print("Someones must prepare for preaching in", correct_day)
-                    text = correct_day + " Вы проповедуете в церкви Слово Жизни"
-                    admin_text = ', '.join(events_base[this_day]['ministers']) + ' проповедуют ' + correct_day
+                    text = correct_day + " Вы проповедуете в церкви Слово Жизни. Тема: " + events_base[this_day]['theme']
+                    admin_text = ', '.join(events_base[this_day]['ministers']) + ' проповедуют ' + correct_day + '. Тема: ' + events_base[this_day]['theme']
+                    print(text, '\n', admin_text)
                     count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
                     count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
                                            admin_text)
 
                 if events_base[this_day]['type'] == 'Bible Teaching':
-                    print("Someones must prepare for Bible Teaching in", correct_day)
-                    text = correct_day + " Вы ведете разбор Библии"
+                    text = correct_day + " Вы ведете разбор Библии; Текст: " + events_base[this_day]['theme']
                     # TODO: (3) прикрутить функцию send_email для отправки сообщений по почте (ее можно вызывать и в send_sms)
-                    admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет разбор ' + correct_day
+                    admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет разбор ' + correct_day  + '. Текст: ' + events_base[this_day]['theme']
+                    print(text, '\n', admin_text)
                     count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
                     count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
                                            admin_text)
