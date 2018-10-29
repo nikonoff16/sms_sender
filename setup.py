@@ -29,6 +29,7 @@ Bussiness logic:
 import json 
 import datetime
 import time
+import requests
 
 # Creating global variables
 try:
@@ -42,12 +43,14 @@ try:
 		events_base = json.load(read_file)
 except FileNotFoundError:
 	events_base = {}
-
+api_keys = {}
 try:
 	with open("api.json", "r") as api_file:
-		api = json.load(api_file)
+		api_keys = json.load(api_file)
 except FileNotFoundError:
-	api = {"login": 0, "myapi": 0}
+	api_keys = {"login": 0, "myapi": 0}
+
+
 
 # Creating date-variables 
 # I don't know for sure what date standard I would use in the main cycle, so let it be both there.s	
@@ -55,8 +58,30 @@ except FileNotFoundError:
 date_cur_date = datetime.datetime.now()
 str_cur_date = str(date_cur_date)[:10]  # I need only YYYY-MM-DD date format, so by slicing to 10 I make it
 
+###########################################################################################################
+################################## STATE SCRIPT CONSOLE PRESENTATION ###################################### 
+###########################################################################################################
 
+# API-status
 
-print(date_cur_date, str_cur_date)
-
-
+print('Проверка ключей доступа к API smsaero.ru')
+if api_keys['login'] == 0 and api_keys['myapi'] == 0:
+	print('\nДанные не обнаружены, переходим к процедуре добавления ключей.\n')
+	count = 3
+	while count != 0:
+		api_keys['login'] = input('Введите корректный логин от ресурса smsaero.ru (как правило это email-адрес): ')
+		api_keys['myapi'] = input('Введите корректный ключ доступа к API: ')
+		auth = "https://" + api_keys['login'] + ":" + api_keys['myapi'] + "@gate.smsaero.ru/v2"
+		response = requests.get(auth + '/auth')
+		todos = response.json()
+		if todos['success']:
+			with open('api.json', 'w') as write_file:
+				json.dump(api_keys, write_file, indent=4, ensure_ascii=False,)
+			print('\nАвторизация прошла успешно, даные сохранены в api.json в корне приложения.')
+			break
+		count -= 1
+		print('Авторизация не удалась, проверьте корректность введенных данных и попробуйте снова.')
+		print('Количество оставшихся попыток:', count)
+# Дописать ситуации, когда:
+# 	- файл есть, его нужно скорректировать (пусть он и рабочий)
+#   - файл есть, он не рабочий
