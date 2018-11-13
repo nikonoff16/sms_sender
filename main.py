@@ -185,8 +185,11 @@ while True:
                     admin_text = ', '.join(events_base[this_day]['ministers']) + ' проповедуют ' + correct_day + '. Тема: ' + events_base[this_day]['theme']
                     print(text, '\n', admin_text)
                     count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
-                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
-                                           admin_text)
+                    count, cost = send_sms([
+                        preachers_list['Осипов Виктор'], 
+                        preachers_list['Новиков Николай'], 
+                        preachers_list['Новиков Павел']
+                        ], admin_text)
 
                 if events_base[this_day]['type'] == 'Bible Teaching':
                     text = correct_day + " Вы ведете разбор Библии; Текст: " + events_base[this_day]['theme']
@@ -194,8 +197,11 @@ while True:
                     admin_text = ', '.join(events_base[this_day]['ministers']) + ' ведет разбор ' + correct_day  + '. Текст: ' + events_base[this_day]['theme']
                     print(text, '\n', admin_text)
                     count, cost = send_sms(phones(this_day, preachers_list, events_base), text)
-                    count, cost = send_sms([preachers_list['Осипов Виктор'], preachers_list['Новиков Николай']],
-                                           admin_text)
+                    count, cost = send_sms([
+                        preachers_list['Осипов Виктор'], 
+                        preachers_list['Новиков Николай'], 
+                        preachers_list['Новиков Павел']
+                        ], admin_text)
 
                 events_base[this_day]['sended'] += 1  # Перезапись таблицы после отправки (не факт что успешной)
                 checked_days[check_day] = True  # Отметка об отправке в этот день
