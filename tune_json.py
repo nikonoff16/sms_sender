@@ -1,37 +1,12 @@
 #! python3
 #! -*- coding: utf-8 -*-
 
-'''
-Module manifest
-The module should interact with *.json files in the program and provide for that human-frendly 
-interface. 
-The core functionality: change or create events_base and preachers_base files through one console window. 
-
-Bussiness logic:
-- Show current state of events_base and preachers_base
-- Ask is it right that user wants to setup the program
-- If user acsepts the request, ask him what time period he is going to setup (by default it shall be 92 days 
-  and starts from last date in event_base)
-- The scrit starts for cycle and parses every date in that period. 
-- The processors - the big il-elif-else construction - shall manage different event rules.
-- The rules may relate to the weekday, day of the month (25.12, 07.01) or any other calculated church event, like Pascha.
-	- Every rule shall have its own theme marker.
-- Every rule shall use create_event() function. 
-- Every event shall have following points:
-	- Preachers
-	- Leaders
-	- Proposal text
-- When an iteration ends, script shall update json-file with new data.
-- When the cycle ends, script shall
-	- create a copy of json-file and place it in designated directory
-	- delete all the events, that is older then current date
-'''
 import json 
 import datetime
 import time
 import requests
 
-# Creating global variables
+# Создаем глобальные переменные скрипта
 try:
 	with open("preachers_base.json", "r") as read_file:
 		preachers_list = json.load(read_file)
@@ -50,10 +25,12 @@ try:
 except FileNotFoundError:
 	api_keys = {"login": 0, "myapi": 0}
 
+# Отметка об успешном прохождении авторизации
+succesful_id = False
 
 
-# Creating date-variables 
-# I don't know for sure what date standard I would use in the main cycle, so let it be both there.s	
+
+# Создаю переменные даты в разных форматах, т.к. не уверен, который мне будет нужен. 
 
 date_cur_date = datetime.datetime.now()
 str_cur_date = str(date_cur_date)[:10]  # I need only YYYY-MM-DD date format, so by slicing to 10 I make it
@@ -83,13 +60,17 @@ if api_keys['login'] == 0 and api_keys['myapi'] == 0:
 			with open('api.json', 'w') as write_file:
 				json.dump(api_keys, write_file, indent=4, ensure_ascii=False,)
 			print('\nАвторизация прошла успешно, даные сохранены в api.json в корне приложения.')
+			succesful_id = True
 			break
 		count -= 1
 		print('Авторизация не удалась, проверьте корректность введенных данных и попробуйте снова.')
 		print('Количество оставшихся попыток:', count)
 
 elif not auth_check(api_keys, eml=api_keys['login'], pswrd=api_keys['myapi']):
-	print('\nАвторизация не удалась, проверьте корректность учетных данных, наличие интернет-соединения, доступность сервера смс-рассылки.')
+	print('\nАвторизация не удалась, проверьте следующие параметры: ',
+			'\n - корректность учетных данных', 
+			'\n - наличие интернет-соединения', 
+			'\n - доступность сервера смс-рассылки.')
 	users_will = input('Желаете ли Вы ввести заново учетные данные от своего смс-шлюза? \nОтветьте Да/Нет: ')
 	if users_will in ["Да", "Да ", "да", "да ","ДА", "ДА ", "д", "д ", "Д", "Д ","Yes", "Y", "yes", "y"]:
 		count = 3
@@ -98,10 +79,34 @@ elif not auth_check(api_keys, eml=api_keys['login'], pswrd=api_keys['myapi']):
 				with open('api.json', 'w') as write_file:
 					json.dump(api_keys, write_file, indent=4, ensure_ascii=False,)
 				print('\nАвторизация прошла успешно, даные сохранены в api.json в корне приложения.')
+				succesful_id = True
 				break
 			count -= 1
 			print('Авторизация не удалась, проверьте корректность введенных данных и попробуйте снова.')
 			print('Количество оставшихся попыток:', count)
 
-# Дописать ситуации, когда:
-# 	- файл есть, его нужно скорректировать (пусть он и рабочий)
+
+else:
+	print("Логин", api_keys['login'], "успешно авторизован в системе smsaero.ru")
+	users_will = input('Желаете ли Вы изменить логин и парль от своего смс-шлюза? \nОтветьте Да/Нет: ')
+	if users_will in ["Да", "Да ", "да", "да ","ДА", "ДА ", "д", "д ", "Д", "Д ","Yes", "Y", "yes", "y"]:
+		count = 3
+		while count != 0:
+			if auth_check(api_keys):
+				with open('api.json', 'w') as write_file:
+					json.dump(api_keys, write_file, indent=4, ensure_ascii=False,)
+				print('\nАвторизация прошла успешно, даные сохранены в api.json в корне приложения.')
+				succesful_id = True
+				break
+			count -= 1
+			print('Авторизация не удалась, проверьте корректность введенных данных и попробуйте снова.')
+			print('Количество оставшихся попыток:', count)
+	else:
+		succesful_id = True  # предотвращаем падение в случае отсутствия изменений и рабочего id
+
+if succesful_id:
+	print("All is working!")
+
+# если будет время - сделать ввод пароля как в терминале.
+# если будет время - сделать цикл ввода пароля отдельной функцией
+# дальше - следуй намеченному плану разработки
