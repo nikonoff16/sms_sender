@@ -26,7 +26,7 @@ except FileNotFoundError:
 	api_keys = {"login": 0, "myapi": 0}
 
 # Отметка об успешном прохождении авторизации
-succesful_id = False
+succesful_id = True
 
 
 
@@ -51,20 +51,23 @@ def auth_check(api: dict, eml=0, pswrd=0) -> 'bool':
 	todos = response.json()
 	return todos['success']  # Here we receive a boolean, response from sms-server.
 
-print('Проверка ключей доступа к API smsaero.ru')
-if api_keys['login'] == 0 and api_keys['myapi'] == 0:
-	print('\nДанные не обнаружены, переходим к процедуре добавления ключей.\n')
-	count = 3
+# Login-password input cycle
+def logpss_cycle(count=3):
+	# print(status_message)
 	while count != 0:
 		if auth_check(api_keys):
 			with open('api.json', 'w') as write_file:
 				json.dump(api_keys, write_file, indent=4, ensure_ascii=False,)
 			print('\nАвторизация прошла успешно, даные сохранены в api.json в корне приложения.')
-			succesful_id = True
-			break
+			return True	
 		count -= 1
 		print('Авторизация не удалась, проверьте корректность введенных данных и попробуйте снова.')
 		print('Количество оставшихся попыток:', count)
+
+print('Проверка ключей доступа к API smsaero.ru')
+if api_keys['login'] == 0 and api_keys['myapi'] == 0:
+	print('\nДанные не обнаружены, переходим к процедуре добавления ключей.\n')
+	succesful_id = logpss_cycle()	
 
 elif not auth_check(api_keys, eml=api_keys['login'], pswrd=api_keys['myapi']):
 	print('\nАвторизация не удалась, проверьте следующие параметры: ',
@@ -73,36 +76,13 @@ elif not auth_check(api_keys, eml=api_keys['login'], pswrd=api_keys['myapi']):
 			'\n - доступность сервера смс-рассылки.')
 	users_will = input('Желаете ли Вы ввести заново учетные данные от своего смс-шлюза? \nОтветьте Да/Нет: ')
 	if users_will in ["Да", "Да ", "да", "да ","ДА", "ДА ", "д", "д ", "Д", "Д ","Yes", "Y", "yes", "y"]:
-		count = 3
-		while count != 0:
-			if auth_check(api_keys):
-				with open('api.json', 'w') as write_file:
-					json.dump(api_keys, write_file, indent=4, ensure_ascii=False,)
-				print('\nАвторизация прошла успешно, даные сохранены в api.json в корне приложения.')
-				succesful_id = True
-				break
-			count -= 1
-			print('Авторизация не удалась, проверьте корректность введенных данных и попробуйте снова.')
-			print('Количество оставшихся попыток:', count)
-
+		succesful_id = logpss_cycle()	
 
 else:
 	print("Логин", api_keys['login'], "успешно авторизован в системе smsaero.ru")
 	users_will = input('Желаете ли Вы изменить логин и парль от своего смс-шлюза? \nОтветьте Да/Нет: ')
 	if users_will in ["Да", "Да ", "да", "да ","ДА", "ДА ", "д", "д ", "Д", "Д ","Yes", "Y", "yes", "y"]:
-		count = 3
-		while count != 0:
-			if auth_check(api_keys):
-				with open('api.json', 'w') as write_file:
-					json.dump(api_keys, write_file, indent=4, ensure_ascii=False,)
-				print('\nАвторизация прошла успешно, даные сохранены в api.json в корне приложения.')
-				succesful_id = True
-				break
-			count -= 1
-			print('Авторизация не удалась, проверьте корректность введенных данных и попробуйте снова.')
-			print('Количество оставшихся попыток:', count)
-	else:
-		succesful_id = True  # предотвращаем падение в случае отсутствия изменений и рабочего id
+		succesful_id = logpss_cycle()
 
 if succesful_id:
 	print("All is working!")
