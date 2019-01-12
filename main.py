@@ -138,7 +138,7 @@ while True:
 
     # Функция Дайджест проповедника ОНА НАСТРОЕНА ИСКЛЮЧИТЕЛНО НА РАБОТУ С ТРЕХЧАСОВЫМИ ПЕРИОДАМИ БЕЗДЕЙСТВИЯ!!!
     # if (time.strftime("%a") == "Thu") and (6 <= int(time.strftime('%H', time.localtime())) < 21):
-    if (time.strftime("%a") == "Mon") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
+    if (time.strftime("%a") == "Fri") and (18 <= int(time.strftime('%H', time.localtime())) < 21):
         weekly_events = []
         messages = ["Новости служения"]
         for church_event in events_list:
@@ -158,7 +158,7 @@ while True:
             # print(text, len(text))
             messages.append(text)
         messages = ' '.join(messages)
-        print(messages)
+        print(messages, weekly_events)
         count, cost = send_sms(phones("This dosen't matter", preachers_list, events_base, all=True), messages)
 
     # Отправка предупреждений о братском молитвенном ОНА НАСТРОЕНА ИСКЛЮЧИТЕЛНО НА РАБОТУ С ТРЕХЧАСОВЫМИ ПЕРИОДАМИ БЕЗДЕЙСТВИЯ!!!
